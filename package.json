@@ -1,0 +1,11 @@
+{
+  "name": "mytube",
+  "version": "1.0.0",
+  "description": "This is mern project (youtube like platform)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Komal Gangani",
+  "license": "ISC"
+}
