@@ -55,8 +55,10 @@ const userSchema = new Schema(
 
 // never use arroe function in call back (it doen not know context)
 userSchema.pre("save" , async function (next){
-    if(!this.isModified("passwor")) return next();
+
+    if(!this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password ,10)
+    console.log("Hiii passsowrd" +this.password)
     next()
 })
 
