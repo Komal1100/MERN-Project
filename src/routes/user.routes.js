@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { login, logout, refreshAccessToken, registerUser } from "../controllers/user.controller.js";
+import { changePassword, getCurrentUser, login, logout, refreshAccessToken, registerUser, updateUserAvatar, updateUserCoverImage, updateUserFields } from "../controllers/user.controller.js";
 import {uploadMulter} from "../middlewares/multer.middleware.js"
 import { verifyUser } from "../middlewares/auth.middlerware.js"
 
@@ -26,6 +26,15 @@ router.route("/logout").post(verifyUser , logout)
 
 router.route("/refresh-token").post(refreshAccessToken)
 
+router.route("/curr-user").post(verifyUser , getCurrentUser)
+
+router.route("/update-user-detail").post(verifyUser, updateUserFields)
+
+router.route("/update-user-avatar").post(verifyUser,uploadMulter.single("avatar"),updateUserAvatar)
+
+router.route("/update-user-coverimage").post(verifyUser,uploadMulter.single("coverImage"), updateUserCoverImage)
+
+router.route("/change-user-password").post(verifyUser,changePassword)
+
 export default router
 
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTI2NDgxYWE1NWYzNDhhY2MwM2Q0ZmQiLCJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJ1c2VyTmFtZSI6ImtvbWFsIiwiZnVsbE5hbWUiOiJLb21hbCBHYW5nYW5pIiwiaWF0IjoxNzY0NDc5MjI0LCJleHAiOjE3NjQ1NjU2MjR9.1RYzE8IB7c7ceGa5My1i207NdIRpYo9x_QKI3QWAdW0
