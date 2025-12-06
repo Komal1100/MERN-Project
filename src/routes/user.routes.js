@@ -26,15 +26,15 @@ router.route("/logout").post(verifyUser , logout)
 
 router.route("/refresh-token").post(refreshAccessToken)
 
-router.route("/curr-user").post(verifyUser , getCurrentUser)
+router.route("/curr-user").get(verifyUser , getCurrentUser)
 
-router.route("/update-user-detail").post(verifyUser, updateUserFields)
+router.route("/update-user-detail").patch(verifyUser, updateUserFields)
 
-router.route("/update-user-avatar").post(verifyUser,uploadMulter.single("avatar"),updateUserAvatar)
+router.route("/update-user-avatar").patch(verifyUser,uploadMulter.single("avatar"),updateUserAvatar)
 
-router.route("/update-user-coverimage").post(verifyUser,uploadMulter.single("coverImage"), updateUserCoverImage)
+router.route("/update-user-coverimage").patch(verifyUser,uploadMulter.single("coverImage"), updateUserCoverImage)
 
-router.route("/change-user-password").post(verifyUser,changePassword)
+router.route("/change-user-password").patch(verifyUser,changePassword)
 
 export default router
 
